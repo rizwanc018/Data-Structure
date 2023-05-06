@@ -33,6 +33,26 @@ class LinkedList {
         }
     }
 
+    insertNextTo(nextTo, data) {
+        const node = new Node(data)
+        let tmp = this.head
+        while(tmp !== null) {
+            if(tmp.data === nextTo) {
+                if(tmp === this.tail) {
+                    tmp.next = node
+                    this.tail = node
+                    return
+                }
+
+                node.next = tmp.next
+                tmp.next = node
+                return
+            } else {
+                tmp = tmp.next
+            }
+        }
+    }
+
     delete(data) {
         if (!this.head) {
             return
@@ -69,14 +89,19 @@ class LinkedList {
         }
         console.log(res.join(' -> '));
     }
+
+    printTail(){
+        console.log('Tail is: ',this.tail)
+    }
 }
 
 const list = new LinkedList()
 list.append('a')
 list.append('b')
-list.append('c')
+list.append('d')
 list.print()
-list.prepend('-a')
+list.printTail()
+list.insertNextTo('d','f')
 list.print()
-list.delete('a')
-list.print()
+list.printTail()
+
