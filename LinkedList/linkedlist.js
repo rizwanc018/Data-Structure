@@ -36,9 +36,9 @@ class LinkedList {
     insertNextTo(nextTo, data) {
         const node = new Node(data)
         let tmp = this.head
-        while(tmp !== null) {
-            if(tmp.data === nextTo) {
-                if(tmp === this.tail) {
+        while (tmp !== null) {
+            if (tmp.data === nextTo) {
+                if (tmp === this.tail) {
                     tmp.next = node
                     this.tail = node
                     return
@@ -68,60 +68,91 @@ class LinkedList {
         while (tmp.next) {
             if (tmp.next.data === data) {
                 tmp.next = tmp.next.next
-                if(!tmp.next) {
+                if (!tmp.next) {
                     this.tail = tmp
                 }
                 return
             }
-            tmp  = tmp.next
+            tmp = tmp.next
         }
     }
 
     removeDuplicate() {
         let curr = this.head
-        while(curr !== null) {
+        while (curr !== null) {
             let nxt = curr.next
-            while(nxt !== null && curr.data === nxt.data) {
+            while (nxt !== null && curr.data === nxt.data) {
                 nxt = nxt.next
             }
             curr.next = nxt
             curr = nxt
-            if(nxt === this.tail) {
+            if (nxt === this.tail) {
                 this.tail = curr
             }
         }
     }
 
+    // reverseLinkedList() {
+    //     let prev = null
+    //     let curr = this.head
+    //     let next = null
+        
+    //     while(curr) {
+    //         next = curr.next
+    //         curr.next = prev
+    //         prev = curr
+    //         curr = next
+    //     }
+    // }
+
     print() {
-        if(!this.head) {
+        if (!this.head) {
             return
         }
         let tmp = this.head
         let res = []
-        while(tmp){
+        while (tmp) {
             res.push(tmp.data)
             tmp = tmp.next
         }
         console.log(res.join(' -> '));
     }
 
-    printTail(){
-        console.log('Tail is: ',this.tail)
+    printTail() {
+        console.log('Tail is: ', this.tail)
     }
+}
+
+const reverseLinkedList = (head) => {
+    let prev = null
+    let curr = head
+    let next = null
+    
+    while(curr) {
+        next = curr.next
+        curr.next = prev
+        prev = curr
+        curr = next
+    }
+    
+    return prev
 }
 
 const list = new LinkedList()
 list.append('a')
+// list.append('b')
+// list.append('b')
 list.append('b')
-list.append('b')
-list.append('b')
+// list.append('c')
 list.append('c')
-list.append('c')
+// list.append('d')
 list.append('d')
 list.print()
 // list.printTail()
 // list.insertNextTo('d','f')
-list.removeDuplicate()
-list.print()
-list.printTail()
+// list.removeDuplicate()
+// list.reverseLinkedList()
+// list.print()
+// list.printTail()
+console.log(reverseLinkedList(list.head));
 
