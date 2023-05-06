@@ -77,6 +77,21 @@ class LinkedList {
         }
     }
 
+    removeDuplicate() {
+        let curr = this.head
+        while(curr !== null) {
+            let nxt = curr.next
+            while(nxt !== null && curr.data === nxt.data) {
+                nxt = nxt.next
+            }
+            curr.next = nxt
+            curr = nxt
+            if(nxt === this.tail) {
+                this.tail = curr
+            }
+        }
+    }
+
     print() {
         if(!this.head) {
             return
@@ -98,10 +113,15 @@ class LinkedList {
 const list = new LinkedList()
 list.append('a')
 list.append('b')
+list.append('b')
+list.append('b')
+list.append('c')
+list.append('c')
 list.append('d')
 list.print()
-list.printTail()
-list.insertNextTo('d','f')
+// list.printTail()
+// list.insertNextTo('d','f')
+list.removeDuplicate()
 list.print()
 list.printTail()
 
