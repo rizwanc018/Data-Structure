@@ -149,10 +149,10 @@ list.append('c')
 list.append('d')
 list.print()
 // list.printTail()
-// list.insertNextTo('d','f')
+list.insertNextTo('d','f')
 // list.removeDuplicate()
 // list.reverseLinkedList()
 // list.print()
-// list.printTail()
-console.log(reverseLinkedList(list.head));
+list.printTail()
+// console.log(reverseLinkedList(list.head));
 
