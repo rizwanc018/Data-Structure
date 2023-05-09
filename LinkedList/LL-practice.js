@@ -110,17 +110,28 @@ class LinkedList {
 
 }
 
+function convertToLL(arr) {
+    for (let i = 0; i < arr.length; i++) {
+        l.append(arr[i])
+    }
+}
+
 const l = new LinkedList()
-l.append('a')
-l.append('b')
-l.append('c')
-l.append('d')
-l.append('e')
+const arr = [1,2,3,4]
+convertToLL(arr)
 l.print()
-l.prepend('-a')
-l.append('f')
-l.delete('d')
-l.insertAfter('a', 'aa')
-l.insertBefore('c', 'bb')
-console.log(l.reverse())
-l.print()
+
+
+// l.append('a')
+// l.append('b')
+// l.append('c')
+// l.append('d')
+// l.append('e')
+// l.print()
+// l.prepend('-a')
+// l.append('f')
+// l.delete('d')
+// l.insertAfter('a', 'aa')
+// l.insertBefore('c', 'bb')
+// console.log(l.reverse())
+// l.print()
