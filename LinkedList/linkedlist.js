@@ -92,18 +92,37 @@ class LinkedList {
         }
     }
 
-    // reverseLinkedList() {
-    //     let prev = null
-    //     let curr = this.head
-    //     let next = null
-        
-    //     while(curr) {
-    //         next = curr.next
-    //         curr.next = prev
-    //         prev = curr
-    //         curr = next
-    //     }
-    // }
+    reverse() {
+        if (!this.head) {
+            return -1
+        }
+        let prev = null
+        let curr = this.head
+        let next = null
+
+        while (curr) {
+            next = curr.next
+            curr.next = prev
+            prev = curr
+            curr = next
+        }
+
+        this.head = prev
+    }
+
+    findMiddle() {
+        let middle = this.head
+        let end = this.head
+        if (!this.head) {
+            return -1
+        }
+
+        while (end !== null && end.next !== null) {
+            middle = middle.next
+            end = end.next.next
+        }
+        return middle
+    }
 
     print() {
         if (!this.head) {
@@ -127,15 +146,20 @@ const reverseLinkedList = (head) => {
     let prev = null
     let curr = head
     let next = null
-    
-    while(curr) {
+
+    while (curr) {
         next = curr.next
         curr.next = prev
         prev = curr
         curr = next
     }
-    
     return prev
+}
+
+function convertArrayToLinkedList(arr) {
+    for (let i = 0; i < arr.length; i++) {
+        l.append(arr[i])
+    }
 }
 
 const list = new LinkedList()
@@ -149,10 +173,13 @@ list.append('c')
 list.append('d')
 list.print()
 // list.printTail()
-list.insertNextTo('d','f')
+// list.insertNextTo('d', 'f')
+console.log('Reversed')
+list.reverse()
+list.print()
 // list.removeDuplicate()
 // list.reverseLinkedList()
 // list.print()
-list.printTail()
+// list.printTail()
 // console.log(reverseLinkedList(list.head));
-
+// console.log("Middle: ", list.findMiddle());
