@@ -30,7 +30,7 @@ const binaryRec = (arr, t, s, e) => {
 
 
 let a = [22, 23, 33, 45, 56, 66, 67, 78, 99]
-let t = 46
+let t = 45
 let s = 0
 let e = a.length - 1
 console.log('Target position: ', binaryRec(a, t, s, e));

@@ -16,122 +16,69 @@ class LinkedList {
         if (!this.head) {
             this.head = node
             this.tail = node
-            return
+        } else {
+            this.tail.next = node
+            this.tail = node
         }
-        this.tail.next = node
-        this.tail = node
+
+        // while(curr.next) {
+        //     curr = curr.next
+        // }
+        // curr.next = node
+
     }
 
-    prepend(data) {
-        const node = new Node(data)
-        if (!this.head) {
-            this.head = node
-            this.tail = tail
-            return
-        }
-        node.next = this.head
-        this.head = node
-    }
-
-    delete(value) {
-        let curr = this.head
-        if (this.head.data === value) {
-            this.head = curr.next
-            curr.next = null
-            return
-        }
-        while (curr.next) {
-            if (curr.next.data === value) {
-                curr.next = curr.next.next
-                return
-            }
-            curr = curr.next
-        }
-    }
-
-    insertBefore(pos, data) {
-        const node = new Node(data)
-        let curr = this.head
-        if (this.head.data === pos) {
-            node.next = this.head
-            this.head = node
-            return
-        }
-        while (curr.next) {
-            if (curr.next.data === pos) {
-                node.next = curr.next
-                curr.next = node
-                return
-            }
-            curr = curr.next
-        }
-    }
-
-    insertAfter(pos, data) {
-        const node = new Node(data)
+    removeDuplicate() {
         let curr = this.head
         while (curr) {
-            if (curr.data == pos) {
-                if (curr.next == null) {
-                    curr.next = node
-                    this.tail = node
-                    return
-                }
-                node.next = curr.next
-                curr.next = node
-                return
+            let next = curr.next
+            while (next !== null && curr.data === next.data) {
+                next = next.next
             }
-            curr = curr.next
+            curr.next = next
+            curr = next
+            if (curr === this.tail) {
+                this.tail = curr
+            }
         }
     }
 
-    reverse() {
-        let prev = null
-        let curr = this.head
-        let next = null
-        while(curr) {
-            next = curr.next
-            curr.next = prev
-            prev = curr
-            curr = next
-        }
-        return prev
-    }
+
+    // removeDuplicate() {
+    //     let curr = this.head
+    //     while (curr !== null) {
+    //         let nxt = curr.next
+    //         while (nxt !== null && curr.data === nxt.data) {
+    //             nxt = nxt.next
+    //         }
+    //         curr.next = nxt
+    //         curr = nxt
+    //         if (nxt === this.tail) {
+    //             this.tail = curr
+    //         }
+    //     }
+    // }
 
     print() {
-        let arr = []
+        let ll = []
         let curr = this.head
         while (curr) {
-            arr.push(curr.data)
+            ll.push(curr.data)
             curr = curr.next
         }
-        console.log('List : ', arr.join('->'))
-    }
-
-}
-
-function convertToLL(arr) {
-    for (let i = 0; i < arr.length; i++) {
-        l.append(arr[i])
+        console.log(ll.join('->'))
     }
 }
 
-const l = new LinkedList()
-const arr = [1,2,3,4]
-convertToLL(arr)
-l.print()
-
-
-// l.append('a')
-// l.append('b')
-// l.append('c')
-// l.append('d')
-// l.append('e')
-// l.print()
-// l.prepend('-a')
-// l.append('f')
-// l.delete('d')
-// l.insertAfter('a', 'aa')
-// l.insertBefore('c', 'bb')
-// console.log(l.reverse())
-// l.print()
+const list = new LinkedList()
+list.append('a')
+list.append('b')
+list.append('b')
+list.append('b')
+list.append('c')
+list.append('c')
+list.append('d')
+list.append('d')
+list.print()
+list.removeDuplicate()
+list.print()

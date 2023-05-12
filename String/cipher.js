@@ -12,4 +12,4 @@ function change(str, k) {
     console.log(cipher)
 }
 
-change('hai how are you', 2)
+change('hai', 2)
