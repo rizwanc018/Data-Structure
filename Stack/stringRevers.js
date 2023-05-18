@@ -26,10 +26,9 @@ for (const i in s) {
     stk.push(s[i])
 }
 
-let l = stk.size()
 let r = ''
-while (l > 0) {
+while (stk.size()) {
     r += stk.pop()
-    l--
 }
+
 console.log(r)
