@@ -1,0 +1,88 @@
+class HashTable{
+    constructor(size) {
+        this.table = []
+        this.size = size
+    }
+
+    hash(key) {
+        let total = 0
+        for(let i = 0; i < key.length; i++) {
+            total += key.charCodeAt(i)
+        }
+        return total % this.size
+    }
+
+    set(key, value) {
+        const i = this.hash(key)
+        const bucket = this.table[i]
+
+        if(!bucket) {
+            this.table[i] = [[key, value]]
+        } else {
+            const samekeyItem = bucket.find(item => item[0] === key)
+            if(samekeyItem) samekeyItem[1] = value
+            else bucket.push([key, value])
+        }
+        // this.table[i] = value
+    }
+
+    get(key) {
+        const i = this.hash(key)
+        const bucket = this.table[i]
+
+        if(bucket){
+            const samekeyItem = bucket.find(item => item[0] === key)
+            if(samekeyItem) return samekeyItem[1]
+        }
+        return undefined
+        // return this.table[i]
+    }
+
+    remove(key) {
+        const i = this.hash(key)
+        const bucket = this.table[i]
+
+        if(bucket) {
+            const samekeyItem = bucket.find(item => item[0] === key)
+            if(samekeyItem){
+                bucket.splice(bucket.indexOf(samekeyItem), 1)
+            }
+        }
+
+        // this.table[i] = undefined
+    }
+
+    isPrime(key) {
+        const hash = this.hash(key)
+        for( let i = 0, s = Math.sqrt(hash); i <= s; i++ ) {
+            if(hash % i === 0) return false
+        }
+        return hash > 1
+    }
+
+    display() {
+        for(let i = 0; i < this.table.length; i++) {
+            if(this.table[i]){
+                console.log(i, ' -> ', this.table[i])
+            }
+        }
+    }
+}
+
+const table = new HashTable(10)
+
+table.set('name', 'Rizwan')
+table.set('job', 'Tech Lead')
+table.set('job', 'CTO')
+table.set('jbo', 'abc')
+
+table.display()
+console.log(table.get('job'))
+// console.log('\t---')
+
+table.remove('jbo')
+table.display()
+// console.log('\t---')
+
+// table.set('job', 'CTO')
+// table.display()

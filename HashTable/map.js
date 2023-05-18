@@ -1,9 +1,9 @@
 const m = new Map()
-m.set('a', 50)
-m.set('b', 20)
+m.set('ab', 50)
+m.set('ba', 20)
 console.log(m)
 
-console.log(m.get('b'))
+console.log(m.get('ab'))
 
 console.log(m.has('c'))
 
