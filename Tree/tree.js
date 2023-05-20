@@ -21,13 +21,13 @@ class BinaryTree {
                 if (data < curr.data) {
                     if (!curr.left) {
                         curr.left = node
-                        return this
+                        return 
                     }
                     curr = curr.left
                 } else {
                     if (!curr.right) {
                         curr.right = node
-                        return this
+                        return 
                     }
                     curr = curr.right
                 }
@@ -41,7 +41,6 @@ class BinaryTree {
             return;
         }
         const queue = [this.root];
-        console.log("queue : ",queue)
         let result = '';
 
         while (queue.length > 0) {
