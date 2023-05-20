@@ -37,13 +37,9 @@ stack.push(1)
 stack.push(2)
 stack.push(3)
 stack.display()
-console.log('\n')
-
 console.log('Popped: ',stack.pop());
-console.log('\n')
 
 stack.push(4)
 stack.display()
-console.log('\n')
 
 console.log('Peek :',stack.peek());

@@ -7,7 +7,6 @@ const insertionSort = (arr) => {
             j--
         }
         arr[j + 1] = curr
-        console.log(arr)
     }
     return arr
 }

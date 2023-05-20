@@ -16,4 +16,4 @@ const selectionSort = arr => {
 }
 
 let arr = [234, 43, 55, 63, 5, 6, 235, 547, 33]
-console.log(selectionSort(arr));
+console.log(selectionSort(arr))

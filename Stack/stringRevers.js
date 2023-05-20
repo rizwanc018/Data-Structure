@@ -22,8 +22,8 @@ class Stack {
 
 let s = 'Hello'
 let stk = new Stack()
-for (const i in s) {
-    stk.push(s[i])
+for (const i of s) {
+    stk.push(i)
 }
 
 let r = ''
