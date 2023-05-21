@@ -39,6 +39,30 @@ class MinHeap {
         return this.heap[this.getRightIndex(pI)]
     }
 
+    heapSort(arr) {
+        let len = arr.length
+        for (let i = Math.floor(len / 2) - 1; i >= 0; i--) {
+            this.heapify(arr, len, i)
+        }
+    
+        for (let i = len - 1; i > 0; i--) {
+            [arr[i], arr[0]] = [arr[0], arr[i]];
+            this.heapify(arr, i, 0)
+        }
+    }
+
+    heapify(arr, n, i) {
+        let s = i
+        const l = 2 * i + 1
+        const r = 2 * i + 2
+        if (l < n && arr[l] < arr[s]) s = l
+        if (r < n && arr[r] < arr[s]) s = r
+        if (s !== i) {
+            [arr[i], arr[s]] = [arr[s], arr[i]];
+            this.heapify(arr, n, s)
+        }
+    }
+
     heapifyDown() {
         let i = 0
         while (this.hasLeft(i)) {
@@ -79,22 +103,33 @@ class MinHeap {
         return data
     }
 
+    size() {
+        return this.heap.length
+    }
+
     display() {
         console.log(this.heap)
     }
+
 }
 
+
 const heap = new MinHeap()
-heap.add(8)
-heap.add(6)
-heap.add(2)
-heap.display()
-heap.add(1)
-heap.add(5)
-heap.add(15)
-heap.display()
-console.log('Peeked : ',heap.peek())
-heap.poll()
-heap.display()
-heap.poll()
-heap.display()
+// heap.add(8)
+// heap.add(6)
+// heap.add(2)
+let a = [8, 6, 2]
+heap.heapSort(a)
+console.log(a)
+// heap.display()
+// heap.heapSort(heap.heap)
+// heap.display()
+// heap.add(1)
+// heap.add(5)
+// heap.add(15)
+// heap.display()
+// console.log('Peeked : ',heap.peek())
+// heap.poll()
+// heap.display()
+// heap.poll()
+// heap.display()
