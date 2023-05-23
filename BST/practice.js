@@ -34,17 +34,16 @@ class BinarySearchTree {
 
     search(root, value) {
         if (!root) return false
-
-        if (value < root.data) this.search(root.left, value)
-        else if (value > root.data) this.search(root.right, value)
+        else if(value < root.data) return this.search(root.left, value)
+        else if (value > root.data) return this.search(root.right, value)
         else return true
     }
 }
 
 
 const bst = new BinarySearchTree()
-console.log('Is empty : ', bst.isEpmty())
 bst.insert(10)
 bst.insert(5)
 bst.insert(15)
-console.log(bst.search(10))
+console.log('Is empty : ', bst.isEpmty())
+console.log(bst.search(bst.root, 12))
