@@ -34,16 +34,67 @@ class BinarySearchTree {
 
     search(root, value) {
         if (!root) return false
-        else if(value < root.data) return this.search(root.left, value)
+        else if (value < root.data) return this.search(root.left, value)
         else if (value > root.data) return this.search(root.right, value)
         else return true
     }
+
+    preorderTraversal(root) {
+        if (root) {
+            console.log(root.data)
+            this.preorderTraversal(root.left)
+            this.preorderTraversal(root.right)
+        }
+    }
+
+    indorderTraversal(root) {
+        if (root) {
+            this.indorderTraversal(root.left)
+            console.log(root.data)
+            this.indorderTraversal(root.right)
+        }
+    }
+
+    postOrderTraversal(root) {
+        if (root) {
+            this.postOrderTraversal(root.left)
+            this.postOrderTraversal(root.right)
+            console.log(root.data)
+        }
+    }
+
+    levelorderTraversal() {
+        const queue = []
+        queue.push(this.root)
+        while (queue.length) {
+            let curr = queue.shift()
+            console.log(curr.data)
+            if (curr.left) queue.push(curr.left)
+            if (curr.right) queue.push(curr.right)
+        }
+    }
+
+    getMin(root) {
+        if (!root.left) return root.data
+        return this.getMin(root.left)
+    }
+
+    getMax(root) {
+        if (!root.right) return root.data
+        return this.getMax(root.right)
+    }
 }
+
 
 
 const bst = new BinarySearchTree()
 bst.insert(10)
 bst.insert(5)
 bst.insert(15)
-console.log('Is empty : ', bst.isEpmty())
-console.log(bst.search(bst.root, 12))
+bst.insert(3)
+bst.insert(7)
+
+// console.log('Is empty : ', bst.isEpmty())
+// console.log(bst.search(bst.root, 12))
+console.log(bst.getMin(bst.root))
+console.log(bst.getMax(bst.root))
