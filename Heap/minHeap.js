@@ -45,7 +45,7 @@ class minHeap {
             p = (p - 1) / 2
         }
     }
-    
+
     insert(val) {
         this.heap.push(val)
         this.shiftUp(this.heap.length - 1)
@@ -61,6 +61,29 @@ class minHeap {
         this.shiftDown(0)
     }
 
+    heapSort() {
+        let l = this.heap.length
+        for (let i = Math.floor(l / 2) - 1; i >= 0; i--)
+            this.heapSortHelper(this.heap, l, i)
+
+        for (let i = l - 1; i > 0; i--) {
+            [this.heap[0], this.heap[i]] = [this.heap[i], this.heap[0]]
+            this.heapSortHelper(this.heap, i, 0)
+        }
+    }
+
+    heapSortHelper(arr, n, i) {
+        let s = i
+        let l = 2 * i + 1
+        let r = 2 * i + 1
+        if (l < n && arr[l] < arr[s]) s = l
+        if (r < n && arr[r] < arr[s]) s = r
+        if (s !== i) {
+            [arr[s], arr[i]] = [arr[i], arr[s]]
+            this.heapSortHelper(arr, n, s)
+        }
+    }
+
 }
 
 let a = [1, 5, 15, 7]
@@ -70,4 +93,5 @@ console.log(heap.heap)
 heap.remove()
 console.log(heap.heap)
 heap.insert(2)
+heap.heapSort()
 console.log(heap.heap)
