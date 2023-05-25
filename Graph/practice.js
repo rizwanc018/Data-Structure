@@ -33,6 +33,36 @@ class Graph {
         for (let [vertex, edge] of this.vertexMap)
             console.log(vertex, ' -> ', edge)
     }
+    depthFirstSearch(vertex) {
+        const visited = new Set()
+        const result = []
+
+        const dfs = v => {
+            if (!v || visited.has(v)) return
+            visited.add(v)
+            result.push(v)
+            for (let edge of this.vertexMap.get(v))
+                dfs(edge)
+        }
+        dfs(vertex)
+        return result
+    }
+
+    breadthFirstSearch(vertex) {
+        let visited = new Set()
+        let q = [vertex]
+        let result = []
+        while (q.length > 0) {
+            let curr = q.shift()
+            if (!visited.has(curr)) {
+                result.push(curr)
+                visited.add(curr)
+                for (let edge of this.vertexMap.get(curr))
+                    q.push(edge)
+            }
+        }
+        return result
+    }
 }
 
 const graph = new Graph();
@@ -44,5 +74,6 @@ graph.addEdge("F", "B", true);
 graph.display();
 console.log()
 // graph.removeVertex('D')
-graph.removeEdge('B', 'F')
-graph.display();
+// graph.removeEdge('B', 'F')
+// graph.display();
+console.log(graph.breadthFirstSearch('A'))
