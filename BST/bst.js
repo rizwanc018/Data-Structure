@@ -146,7 +146,7 @@ class BinarySearchTree {
 
         if (value < root.data)
             return this.search(root.left, value)
-        else if (value > root.data) 
+        else if (value > root.data)
             return this.search(root.right, value)
         else return true
     }
