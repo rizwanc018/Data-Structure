@@ -10,34 +10,19 @@ class SuffixTrie {
         this.root = new TrieNode()
     }
 
-    insert(word) {
-        for(let i = 0; i < word.length; i++){
-            let suffix = word.slice(i)
-            this.insertSuffix(suffix)
-        }
-    }
-    // insert(word) {
-    //     let node = this.root
-    //     for (let i = 0; i < word.length - 1; i++) {
-    //         for (let j = i; j < word.length; j++) {
-    //             let char = word[j]
-    //             if (!node.children.has(char))
-    //                 node.children.set(char, new TrieNode())
-    //             node = node.children.get(char)
-    //         }
-    //         node.isEndOfWord = true
-    //     }
-    // }
 
-    insertSuffix(suffix) {
+    insert(word) {
         let node = this.root
-        for (let i = 0; i < suffix.length; i++) {
-            let char = suffix[i]
-            if (!node.children.has(char))
-                node.children.set(char, new TrieNode())
-            node = node.children.get(char)
+        for (let i = 0; i < word.length; i++) {
+            for (let j = i; j < word.length; j++) {
+                let char = word[j]
+                if (!node.children.has(char))
+                    node.children.set(char, new TrieNode())
+                node = node.children.get(char)
+            }
+            node.isEndOfWord = true
+            node = this.root
         }
-        node.isEndOfWord = true
     }
 
     search(word) {
