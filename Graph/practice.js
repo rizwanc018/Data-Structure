@@ -33,18 +33,20 @@ class Graph {
         for (let [vertex, edge] of this.vertexMap)
             console.log(vertex, ' -> ', edge)
     }
+    
     depthFirstSearch(vertex) {
         const visited = new Set()
-        const result = []
-
-        const dfs = v => {
-            if (!v || visited.has(v)) return
-            visited.add(v)
-            result.push(v)
-            for (let edge of this.vertexMap.get(v))
-                dfs(edge)
+        let result = []
+        let s = [vertex]
+        while (s.length > 0) {
+            let curr = s.pop()
+            if (!visited.has(curr)) {
+                result.push(curr)
+                visited.add(curr)
+                for (let edge of this.vertexMap.get(curr))
+                    s.push(edge)
+            }
         }
-        dfs(vertex)
         return result
     }
 
@@ -76,4 +78,6 @@ console.log()
 // graph.removeVertex('D')
 // graph.removeEdge('B', 'F')
 // graph.display();
+console.log(graph.depthFirstSearch('A'))
+console.log(graph.dfsQ('A'))
 console.log(graph.breadthFirstSearch('A'))
