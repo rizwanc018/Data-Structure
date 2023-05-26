@@ -162,7 +162,7 @@ console.log(bst.height(bst.root));
 // console.log(bst.search(bst.root, 12))
 bst.delete(7)
 // bst.preOrderTraversal(bst.root)
-// bst.levelOrderTraversal()
+bst.levelOrderTraversal()
 // console.log(bst.getMax(bst.root));
 
 

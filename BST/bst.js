@@ -170,7 +170,7 @@ bst.insert(80)
 // console.log(JSON.stringify(bst.root, null, 2))
 // console.log(bst.deleteNode(bst.root, 30))
 // console.log(JSON.stringify(bst.root, null, 2))
-// console.log(bst.search(bst.root, 31))
+console.log(bst.search(bst.root, 31))
 
 
 // def inorderTraversal(root):

@@ -1,4 +1,4 @@
-class minHeap {
+class MinHeap {
     constructor() {
         this.heap = []
     }
@@ -87,11 +87,17 @@ class minHeap {
 }
 
 let a = [1, 5, 15, 7]
-const heap = new minHeap()
+const heap = new MinHeap()
 heap.heapify(a)
-console.log(heap.heap)
+// console.log(heap.heap)
 heap.remove()
-console.log(heap.heap)
+// console.log(heap.heap)
 heap.insert(2)
 heap.heapSort()
 console.log(heap.heap)
+
+// const heap = new MinHeap()
+// heap.insert(10)
+// heap.insert(7)
+// heap.insert(3)
+// console.log(heap)
