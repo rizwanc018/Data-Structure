@@ -74,18 +74,19 @@ class MaxHeap {
 }
 
 
-// const heap = new MaxHeap()
-// heap.insert(10)
-// heap.insert(7)
-// heap.insert(3)
-// heap.insert(4)
-// heap.insert(6)
+const heap = new MaxHeap()
+heap.insert(10)
+heap.insert(7)
+heap.insert(3)
+heap.insert(4)
+heap.insert(6)
 
 
-// heap.remove()
-let a = [12, 5,8, 9, 20, 21, 14, 15, 7, 16]
+heap.remove()
+console.log(heap.heap)
+// let a = [12, 5,8, 9, 20, 21, 14, 15, 7, 16]
 
 // let a = [12, 5, 15, 7, 16]
-const heap = new MaxHeap()
-heap.heapSort(a)
-console.log(a)
+// const heap = new MaxHeap()
+// heap.heapSort(a)
+// console.log(a)
