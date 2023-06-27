@@ -8,7 +8,7 @@ class Node {
 class LinkedList {
     constructor() {
         this.head = null
-        this.next = null
+        this.tail = null
     }
 
     append(data) {
