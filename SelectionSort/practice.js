@@ -9,13 +9,24 @@
 //     return arr
 // }
 
+// const selectionSort = arr => {
+//     for(let i = 0; i < arr.length; i++) {
+//         let maxi = i
+//         for(let j = i+1; j < arr.length; j++) {
+//             if(arr[j] > arr[maxi] ) maxi = j
+//         }
+//         [arr[i], arr[maxi]] = [arr[maxi], arr[i]]
+//     }
+//     return arr
+// }
+
 const selectionSort = arr => {
     for(let i = 0; i < arr.length; i++) {
-        let maxi = i
-        for(let j = i+1; j < arr.length; j++) {
-            if(arr[j] > arr[maxi] ) maxi = j
+        let mi = i
+        for(let j = i+1; j < arr.length; j++ ) {
+            if(arr[j] < arr[mi]) mi = j
         }
-        [arr[i], arr[maxi]] = [arr[maxi], arr[i]]
+        [arr[i], arr[mi]] = [arr[mi], arr[i]]
     }
     return arr
 }
