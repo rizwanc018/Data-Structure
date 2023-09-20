@@ -93,9 +93,9 @@ class BinarySearchTree {
         if (value < root.data) root.left = this.deleteNode(root.left, value)
         else if (value > root.data) root.right = this.deleteNode(root.right, value)
         else {
-            if (!root.left && !root.right) return null
-            else if (!root.left) return root.right
-            else if (!root.right) return root.left
+            if (!root.left && !root.right) root =  null
+            else if (!root.left) root =  root.right
+            else if (!root.right) root =  root.left
             else {
                 root.data = getMin(root.right)
                 root.right = this.deleteNode(root.right, root.data)

@@ -62,6 +62,7 @@ class Trie {
 const trie = new Trie();
 trie.insert("apple");
 trie.insert("banana");
+console.log(trie)
 // console.log(trie.search("apple"));  // Output: true
 // console.log(trie.search("banana")); // Output: true
 // console.log(trie.search("orange")); // Output: false

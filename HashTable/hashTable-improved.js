@@ -67,7 +67,7 @@ class HashTable {
 
     hash(key) {
         let total = 0
-        for (let i = 0; i < key.lenght; i++) {
+        for (let i = 0; i < key.length; i++) {
             total += key.charCodeAt(i)
         }
         return total % this.size
@@ -80,7 +80,7 @@ class HashTable {
             this.table[i] = [[key, value]]
         } else {
             let samekeyItem = bucket.find(item => item[0] === key)
-            if (samekeyItem) samekeyItem[i] = value
+            if (samekeyItem) samekeyItem[1] = value
             else bucket.push([key, value])
         }
     }
